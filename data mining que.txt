@@ -1,0 +1,24 @@
+1.SELECT customername,city,country,orderdate,productname,shippername,address,quantity,postalcode
+FROM customers as c  
+JOIN orders as o ON o.CustomerID=c.CustomerID
+join orderdetails as ord on o.orderid=ord.orderid
+join products as prd on ord.productid=prd.productid
+join shippers as s on o.shipperid=s.shipperid
+
+2.SELECT productname,shippername from products as pro 
+join orderdetails as ords on pro.productid=ords.productid
+join orders as o on o.orderid=ords.orderid
+join shippers as shi on shi.shipperid=o.shipperid
+
+3.SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS total FROM Orders
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
+GROUP BY ShipperName;
+
+4.SELECT sum (customers.customerName) AS total FROM customers
+where country ='brazil'or country ='italy'
+
+5.SELECT * FROM Customers where customername like '%son%'
+
+6.SELECT * FROM orders where orderdate >='1996-08-01'and orderdate<='1996-08-30'order by orderdate asc
+
+7.SELECT sum (orderid) as total from orders where orderdate >='1997-01-01'and orderdate <='1997-12-31'
